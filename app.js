@@ -81,7 +81,7 @@ insertData();
 // Update database every hour
 setInterval(insertData, 1 * 60 * 60 * 1000);
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log('Server Started on Port 3000...');
     console.log('Waiting for data...')
 })
