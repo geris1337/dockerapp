@@ -12,5 +12,9 @@
     "express": "^4.17.1",
     "nedb": "^1.8.0",
     "node-fetch": "^2.6.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/geris1337/dockerapp.git"
   }
 }
