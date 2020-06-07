@@ -12,7 +12,7 @@ cd dockerapp
 docker build -t dockerapp .
 docker run -it -d -p 8080:3000 dockerapp
 ```
-## Built With
+## Built with
 
 * [Node.js](https://nodejs.org/) - Backend
 * [Chart.js](https://www.chartjs.org/) - Frontend
