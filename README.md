@@ -22,4 +22,5 @@ http://localhost:8080
 * [Node.js](https://nodejs.org/) - Backend
 * [Chart.js](https://www.chartjs.org/) - Frontend
 * [Express.js](https://expressjs.com/) - Framework
-* [Moment.js](https://momentjs.com/) - For date manipulation
+* [NeDB](https://github.com/louischatriot/nedb) - Database
+* [Moment.js](https://momentjs.com/) - Date manipulation
