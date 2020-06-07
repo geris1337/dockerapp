@@ -1,6 +1,6 @@
 # Dockerized weather app
 
-This app will fetch temperature data from climacell.co and display temperature.
+This app will fetch temperature data from climacell.co and display a graph via port 8080
 
 ### Launching the container
 
