@@ -2,7 +2,7 @@
 
 This app will fetch temperature data from climacell.co and display a graph via port 8080
 
-### Launching the container
+## Launching the container
 
 Run these commands to launch the app, we assume you already have docker installed.
 
