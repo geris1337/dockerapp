@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather | Vilnius</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/chart.css">
+    <script src="js/chart.js"></script>
+    <script src="js/moment.js"></script>
+</head>
+<body>
+    <div class="center">
+        <canvas id="line-chart" width="100%" height="40%"></canvas>
+        <div class="wrapper">
+            <button class="button" onclick="getDay()">Day</button> 
+            <button class="button" onclick="getWeek()">Week</button> 
+            <button class="button" onclick="getMonth()">Month</button>
+        </div>
+    </div>
+    <script>
+        let timeDay = [];
+        let tempDay = [];
+        let timeWeek = [];
+        let tempWeek = [];
+        let timeMonth = [];
+        let tempMonth = [];
+        
+        let data1 = [];
+        let data2 = [];
+        let data3 = [];
+
+        let chart = new Chart(document.getElementById("line-chart"), {
+            type: 'line',
+            data: [],
+            options: {
+                responsive: true,
+                title: {
+                display: true,
+                text: 'Weather in Vilnius'
+                },
+                scales: {
+                    yAxes: [{
+                        display: true,
+                        scaleLabel: {
+                            display: true,
+                            labelString: 'Degrees °C'
+                        }
+                    }]
+                }
+            }
+        });
+
+        //Retrieve datasets
+        getDataDay();
+        getDataWeek();
+        getDataMonth();
+
+        async function getDataDay() {
+            const response = await fetch('/day')
+            const data = await response.json();
+
+            Object.entries(data).forEach(entry => {
+                timeDay.push(moment(new Date(entry[1][0])).format('YYYY-MM-DD | HH:mm'));
+                tempDay.push(entry[1][1]);
+            })
+
+            //Reverse array, make data ascending
+            timeDay = timeDay.reverse();
+            tempDay = tempDay.reverse();
+
+            //Display day chart by default
+            getDay();
+        }
+
+        async function getDataWeek() {
+            const response = await fetch('/week')
+            const data = await response.json();
+
+            Object.entries(data).forEach(entry => {
+                timeWeek.push(moment(new Date(entry[1][0])).format('YYYY-MM-DD | HH:mm'));
+                tempWeek.push(entry[1][1]);
+            })
+
+            //Reverse array, make data ascending
+            timeWeek = timeWeek.reverse();
+            tempWeek = tempWeek.reverse();
+        }
+
+        async function getDataMonth() {
+            const response = await fetch('/month')
+            const data = await response.json();
+
+            Object.entries(data).forEach(entry => {
+                timeMonth.push(moment(new Date(entry[1][0])).format('YYYY-MM-DD | HH:mm'));
+                tempMonth.push(entry[1][1]);
+            })
+
+            //Reverse array, make data ascending
+            timeMonth = timeMonth.reverse();
+            tempMonth = tempMonth.reverse();
+        }
+
+        function getDay() {
+            let data1 = {
+                labels: timeDay,
+                datasets: [{ 
+                    data: tempDay,
+                    label: "Temperature (Celsius)",
+                    borderColor: "#d91f00",
+                    fill: false
+                }]
+            };
+			chart["config"]["data"] = data1; 
+			chart.update();
+		}
+
+        function getWeek() {
+            let data2 = {
+                labels: timeWeek,
+                datasets: [{ 
+                    data: tempWeek,
+                    label: "Temperature (Celsius)",
+                    borderColor: "#d91f00",
+                    fill: false
+                }]
+            };
+			chart["config"]["data"] = data2; 
+			chart.update();
+        }
+
+        function getMonth() {
+            let data3 = {
+                labels: timeMonth,
+                datasets: [{ 
+                    data: tempMonth,
+                    label: "Temperature (Celsius)",
+                    borderColor: "#d91f00",
+                    fill: false
+                }]
+            };
+			chart["config"]["data"] = data3; 
+			chart.update();
+        }
+    </script>
+</body>
+</html>
