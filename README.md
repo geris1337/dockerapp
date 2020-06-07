@@ -4,7 +4,7 @@ This app will fetch temperature data from climacell.co and display temperature.
 
 ### Launching the container
 
-Run these commands to launch the app, we assume you already have docker.
+Run these commands to launch the app, we assume you already have docker installed.
 
 Let's clone the repository
 ```
