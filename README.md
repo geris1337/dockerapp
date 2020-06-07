@@ -6,7 +6,6 @@ This app will fetch temperature data from climacell.co and display temperature.
 
 Run these commands to launch the app, we assume you already have docker installed.
 
-Let's clone the repository
 ```
 git clone https://github.com/geris1337/dockerapp.git
 cd dockerapp
@@ -17,5 +16,5 @@ docker run -it -d -p 8080:3000 dockerapp
 
 * [Node.js](https://nodejs.org/) - Backend
 * [Chart.js](https://www.chartjs.org/) - Frontend
-* [Express.js](https://expressjs.com/ - Framework
+* [Express.js](https://expressjs.com/) - Framework
 * [Moment.js](https://momentjs.com/) - For date manipulation
